@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy International Girlfriend Day!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            text-align: center;
+            overflow: hidden;
+        }
+        .countdown-container {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 2em;
+            color: white;
+            font-family: 'Pacifico', cursive;
+        }
+        .countdown-container .message {
+            font-size: 2em;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-out infinite;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3em;
+            background: white;
+            border-radius: 10px;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: #e63946;
+            animation: bounce 1s ease infinite;
+        }
+        .countdown span {
+            font-weight: bold;
+        }
+        .card {
+            position: relative;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .heart {
+            font-size: 50px;
+            color: #e63946;
+            animation: heartbeat 1.5s infinite;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            animation: fadeInUp 1s ease-out;
+        }
+        p {
+            margin: 10px 0;
+            font-size: 16px;
+            animation: fadeInUp 1s ease-out;
+        }
+        .signature {
+            margin-top: 20px;
+            font-style: italic;
+            animation: fadeInUp 1s ease-out;
+        }
+        .show-image-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #e63946;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: fadeInUp 1s ease-out;
+        }
+        .image-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .image-popup img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .close-popup {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .reveal-animation {
+            animation: reveal 1s ease-out forwards, fadeInUp 1s ease-out;
+        }
+        @keyframes reveal {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        audio {
+            display: none;
+        }
+        .animated-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, rgba(255, 154, 158, 0.5), rgba(250, 208, 196, 0.5));
+            animation: bgAnimation 10s infinite alternate;
+        }
+        @keyframes bgAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="animated-bg"></div>
+    
+    <div class="countdown-container" id="countdown-container">
+        <div class="message">Only</div>
+        <div class="countdown"><span id="countdown">10</span> seconds left</div>
+    </div>
+    
+    <div class="card" id="card">
+        <div class="heart">❤️</div>
+        <h1>Happy International Girlfriend Day!</h1>
+        <p>Em yêu,</p>
+        <p>Nhân ngày National Girlfriend, anh muốn gửi đến em tất cả tình yêu của anh. Em là niềm vui duy nhất với anh hiện tại, và anh may mắn khi có em bên cạnh. Cảm ơn em vì tất cả những gì em đã làm và đã luôn ở bên anh.</p>
+        <p>Yêu em nhiều lắm!</p>
+        <div class="signature">- Quốc Việt</div>
+        <button class="show-image-button" onclick="showImage()">Xem ảnh kỷ niệm của chúng ta</button>
+    </div>
+
+    <div class="image-popup" id="image-popup">
+        <span class="close-popup" onclick="closeImage()">&times;</span>
+        <img src="/hehe.jpg" alt="Kỷ niệm của chúng ta">
+    </div>
+
+    <script>
+        let countdownNumber = 10;
+        const countdownElement = document.getElementById('countdown');
+        const countdownContainer = document.getElementById('countdown-container');
+        const cardElement = document.getElementById('card');
+        const bgMusic = document.getElementById('bg-music');
+
+        bgMusic.play();
+
+        const countdownInterval = setInterval(() => {
+            countdownNumber--;
+            countdownElement.textContent = countdownNumber;
+
+            if (countdownNumber <= 0) {
+                clearInterval(countdownInterval);
+                countdownContainer.style.display = 'none';
+                cardElement.classList.add('reveal-animation');
+            }
+        }, 1000);
+
+        function showImage() {
+            document.getElementById('image-popup').style.display = 'flex';
+        }
+
+        function closeImage() {
+            document.getElementById('image-popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
